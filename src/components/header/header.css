@@ -1,0 +1,116 @@
+.header {
+    display: flex;
+    justify-content: start;
+    height: var(--header-height);
+    border-bottom: 1px solid var(--border-color);
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 99;
+    background-color: var(--white);
+}
+.section__header {
+    display: flex;
+    align-items: center;
+    width: 1200px;
+    margin: auto;
+    justify-content: start;
+    position: relative;
+}
+.icon-menu {
+    display: none;
+}
+.list-menu {
+    display: flex;
+    min-width: 5rem;
+    justify-content: space-between;
+    position: absolute;
+    left: 7rem;
+}
+.section__header img  {
+    width: 5rem;
+    height: 5rem;
+}  
+.section__header > * {
+    margin-right: 1.5rem;
+}
+.arrow-icon, .icon-close-menu {
+    display: none;
+}
+
+.section__header a.active, .section__header a:not(:first-child):hover {
+    color: var(--active-color);;
+}
+
+@media screen and (max-width: 500px) {
+    .header {
+        height: 56px;
+        width: 100vw;
+    }
+    .section__header {
+        height: 100%;
+        width: 100%;
+
+    }
+    .icon-menu {
+        font-size: 1.5rem;
+        align-self: center;
+        line-height: 86px;
+        margin-left: 1rem;
+        display: inline-flex;
+    }
+    .container {
+        width: 100vw;
+        padding: 0 2rem 0 2rem;
+    }
+    .list-menu {
+        top: 0;
+        left: 0;
+        width: 0;
+        background-color: #fff;
+        flex-direction: column;
+        justify-content: start;
+        height: 100vh;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease-in;
+
+    }
+    .list-menu .item-menu {
+        padding: 0.5rem;
+        border-radius: 5px;
+        width: calc(100% - 1rem);
+    }
+    .list-menu .item-menu.active {
+        background-color: var(--border-color);
+        color: rgba(0, 0, 0, 0.55);
+    }
+    #menu:checked + .list-menu {
+        opacity: 1;
+        visibility: visible;
+        padding-left: 1rem;
+        width: 60vw;
+        border: 1px solid var(--border-color);
+    }
+    .icon-close-menu{
+        display: flex;
+        position: absolute;
+        top: 30px;
+        right: -9px;
+        font-size: 12px;
+        width: 1.2rem;
+        height: 1.2rem;
+        font-size: 0.8rem;
+        align-items: center;
+        justify-content: center;
+        background-color: var(--border-color);
+        border-radius: 50%;
+        cursor: pointer;
+    }
+    .arrow-icon {
+        display: inline-flex;
+        font-weight: 300;
+        color: rgba(0, 0, 0, 0.55);
+    }
+}

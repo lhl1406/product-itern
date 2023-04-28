@@ -1,0 +1,47 @@
+.select__group {
+    padding-top: 2rem;
+}
+.label {
+    display: flex;
+    align-items: center;
+}
+
+.lable-user {
+    color: var(--txt-color);
+    font-weight: 300;
+    padding-right: 1rem;
+}
+.lable-border {
+    border-bottom: 1px solid var(--border-color);
+    flex: 1;
+}
+.select-user {
+    outline: none;
+    margin-top: 1rem;
+    padding: 0.5rem;
+    min-width: 220px;
+    border-radius: 5px;
+    border: 1px solid var(--border-color);
+    outline: none;
+    font-size: 0.9rem;
+    transition: border-color ease 0.4s;
+}
+.select-user.active {
+    color: rgba(0, 0, 0, 0.5);
+}
+.select-user.active, .select-user:hover{
+    border-color: var(--active-color);
+}
+
+.input-group {
+    position: relative;
+    width: fit-content;
+}
+
+span.icon {
+    position: absolute;
+    top: 26px;
+    right: 7px;
+    color: #888;
+    font-size: 0.9rem;
+}

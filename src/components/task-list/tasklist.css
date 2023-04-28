@@ -1,0 +1,128 @@
+.task__list {
+    padding-top: 1rem;
+}
+.label {
+    display: flex;
+    align-items: center;
+}
+
+.lable-list {
+    color: var(--txt-color);
+    font-weight: 300;
+    padding-right: 1rem;
+}
+.lable-border {
+    border-bottom: 1px solid var(--border-color);
+    flex: 1;
+}
+
+.table__task {
+    margin-top: 1.5rem;
+    width: 100%;
+    border-radius: 5px;
+    border: 1px solid var(--border-color);
+    max-height: 60vh;
+    overflow-y: scroll;
+    background-color: rgba(245, 245, 245, 0.4);
+    overflow-anchor: none;
+
+}
+.table-empty {
+    font-size: 0.9rem;
+    color: rgba(0, 0, 0, 0.25);
+    text-align: center;
+    min-height: 60vh;
+    padding-top: 2rem;
+    overflow-y: hidden;
+}
+
+.table__task::-webkit-scrollbar {
+   /* width: 10px;
+   height: 10px; */
+}
+  
+.table__task::-webkit-scrollbar-track {
+    background-color: #fff;
+}
+  
+.table__task::-webkit-scrollbar-thumb {
+    background-color: #888; 
+    border-radius: 5px;
+  }
+li.task-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem;
+    border-bottom: 1px solid var(--border-color);
+    color: rgba(0, 0, 0, 0.88);
+}
+li.task-item .task-icon {
+    display: flex;
+    align-items: center;
+  
+}
+li.task-item .task-icon .check-circle-icon,
+li.task-item .task-icon .check-square-icon {
+    margin: auto 0.3rem;
+    min-height: 1.2rem;
+    min-width: 1.2rem;
+}
+li.task-item .task-icon .check-circle-icon{
+   color: #88e887;
+}
+li.task-item .task-icon .check-square-icon {
+    color: #ffa500;
+}
+li.task-item button.task-btn {
+    padding: 0.3rem;
+    outline: none;
+    border-radius: 3px;
+    border: 1px solid var(--border-color);
+    background-color: var(--white);
+    transition: all 0.4s ease;
+    font-weight: 400;
+    white-space: nowrap;
+    line-height: 0.9rem;
+    transition: all 0.4s ease;
+    margin-right: 2rem;
+}
+li.task-item button.task-btn.loading {
+    padding-left: 1rem;
+}
+li.task-item button.task-btn:hover {
+    border-color: var(--active-color);
+    color: var(--active-color);
+    cursor: pointer;
+}
+
+.done-task-total {
+    padding: 1.5rem 0;
+    color: rgba(0, 0, 0, 0.88);
+    font-size: 0.9rem;
+}
+.button-update {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+.img-loading {
+    width: 15px;
+    height: 15px;
+    object-fit: cover;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0;
+    display: none;
+}
+.img-loading.loading {
+    display: inline-flex;
+}
+.empty-user {
+    display: flex;
+    justify-content: center;
+    padding-top: 1.5rem;
+    color: var(--border-color);
+    font-size: 2rem;
+}
