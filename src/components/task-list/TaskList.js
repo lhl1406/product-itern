@@ -2,10 +2,11 @@ import React, { useState } from 'react';
 import './tasklist.css';
 import { CheckCircle, DashSquare, ListTask } from 'react-bootstrap-icons';
 import { updateTodo } from '../../api';
+import { useStore } from '../../store/Hooks';
 const TaskList = (props) => {
-    const [stateTask, dispatchTask] = props.useStore;
+    // const [stateTask, dispatchTask] = props.useStore;
+    const [state, dispatch, stateTask, dispatchTask] = useStore();
     const [isItemClick, setItemClick] = useState(null);
-
     const taskList = stateTask.taskList;
     const handleClick = async (item) => {
         setItemClick(item.id);
@@ -15,7 +16,7 @@ const TaskList = (props) => {
         } catch (error) {
             dispatchTask({ type: 'FETCH_ERROR', payload: error.message });
         }
-        setItemClick(item.id);
+        setItemClick(null);
     };
     return (
         <div className='task__list'>

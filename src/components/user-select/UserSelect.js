@@ -1,18 +1,13 @@
 import React, { useState, useRef } from 'react';
 import { ChevronDown, Search } from 'react-bootstrap-icons';
 import UserList from '../user-list/UserList';
-import TaskList from '../../components/task-list/TaskList';
-import UserReducer from '../../reducer/UserReducer';
-import TaskReducer from '../../reducer/TaskReducer';
-import { useReducer, useEffect } from 'react';
+import { useStore } from '../../store/Hooks';
+import { useEffect } from 'react';
 import { fetchUserList, fetchUserTodos } from '../../api';
 import {
     GET_TASK_LIST_BY_IDU,
-    UP_DATE_TASK,
-    initialStateTask,
     GET_USER_LIST,
     SELECT_USER,
-    initialState,
     FETCH_ERROR,
 } from '../../reducer/constraint';
 
@@ -21,9 +16,7 @@ const UserSelect = () => {
     const [visible, setVisible] = useState(false);
     const inpRef = useRef(null);
     const [inputValue, setInputValue] = useState('');
-    const [state, dispatch] = useReducer(UserReducer, initialState);
-
-    const [stateTask, dispatchTask] = useReducer(TaskReducer, initialStateTask);
+    const [state, dispatch, stateTask, dispatchTask] = useStore();
     useEffect(() => {
         async function fetchData() {
             try {
@@ -51,10 +44,9 @@ const UserSelect = () => {
         try {
             const respone = await fetchUserTodos(state.userSelecter);
             dispatchTask({
-                type: 'GET_TASK_LIST_BY_IDU',
+                type: GET_TASK_LIST_BY_IDU,
                 payload: respone.data,
             });
-            setVisible(false);
         } catch (error) {
             dispatch({ type: FETCH_ERROR, payload: error.message });
         }
@@ -94,10 +86,9 @@ const UserSelect = () => {
         try {
             const respone = await fetchUserTodos(id);
             dispatchTask({
-                type: 'GET_TASK_LIST_BY_IDU',
+                type: GET_TASK_LIST_BY_IDU,
                 payload: respone.data,
             });
-            setVisible(false);
         } catch (error) {
             dispatch({ type: FETCH_ERROR, payload: error.message });
         }
@@ -107,8 +98,8 @@ const UserSelect = () => {
         });
         const userSelecter = state.userList.find((item) => item.id === id);
         inpRef.current.value = userSelecter.name;
-
         setInputValue(userSelecter.name);
+        setVisible(false);
     };
     return (
         <>
@@ -140,7 +131,6 @@ const UserSelect = () => {
                     </span>
                 </div>
             </div>
-            <TaskList useStore={[stateTask, dispatchTask]} />
         </>
     );
 };
